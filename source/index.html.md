@@ -3,12 +3,9 @@ title: API Reference
 
 language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://usealan.com/'>Sign Up for API Key</a>
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -20,226 +17,134 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: Documentation for the Usealan API
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Usealan API! You can use our API to access various API endpoints, which can get information about leads, appointments, messages and campaigns. Everything related to your business.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+You can view code examples in the dark area to the right.
 
 # Authentication
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: Bearer abcdefgh12345678"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Make sure to replace `abcdefgh12345678` with your API key.
 
-let api = kittn.authorize('meowmeowmeow');
-```
+Usealan uses API keys to allow access to the API. You can view your API key in your [admin portal](https://usealan.com/).
 
-> Make sure to replace `meowmeowmeow` with your API key.
+Usealan expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: Bearer abcdefgh12345678`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>abcdefgh12345678</code> with your personal API key.
 </aside>
 
-# Kittens
+# Appointments
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Mark Showed
 
 ```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+curl "https://api.usealan.com/v1/mark_show/<appointment_id>" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "data": null,
+  "code": 200,
+  "message": "Appointment <appointment_id> successfully marked as showed."
+}
 ```
 
-This endpoint retrieves all kittens.
+Marks appointment as 'Showed'.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://api.usealan.com/v1/mark_show/<appointment_id>`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Description
+--------- | -----------
+appointment_id | ID of the appoinment to mark as 'Showed'.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Mark No Showed
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+curl "https://api.usealan.com/v1/mark_no_show/<appointment_id>" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "data": null,
+  "code": 200,
+  "message": "Appointment <appointment_id> successfully marked as no showed."
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+Marks appointment as ‘No Showed’.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST https://api.usealan.com/v1/mark_no_show/<appointment_id>`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+appointment_id | ID of the appoinment to mark as 'No Showed'.
 
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+## Mark Sold
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+curl "https://api.usealan.com/v1/mark_sold/<appointment_id>" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
+  -d '{
+    "down_payment": 70,
+    "annual_contract_value": 5000
+  }'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "data": null,
+  "code": 200,
+  "message": "Appointment <appointment_id> successfully marked as sold."
 }
 ```
 
-This endpoint deletes a specific kitten.
+Marks appointment as ‘Sold’.
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`POST https://api.usealan.com/v1/mark_sold/<appointment_id>`
 
-### URL Parameters
+### Query Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
-
+appointment_id | ID of the appoinment to mark as 'Sold'.
+down_payment | Down payment value, double greater or equal than 0.
+annual_contract_value | Annual contract value, double greater or equal than 0.
