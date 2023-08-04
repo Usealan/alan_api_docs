@@ -319,6 +319,14 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#end-users" class="toc-h2 toc-link" data-title="End Users">End Users</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#appointments" class="toc-h1 toc-link" data-title="Appointments">Appointments</a>
               <ul class="toc-list-h2">
                   <li>
@@ -329,6 +337,14 @@
                   </li>
                   <li>
                     <a href="#mark-sold" class="toc-h2 toc-link" data-title="Mark Sold">Mark Sold</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#stats" class="toc-h1 toc-link" data-title="Stats">Stats</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#main-stats" class="toc-h2 toc-link" data-title="Main Stats">Main Stats</a>
                   </li>
               </ul>
           </li>
@@ -369,6 +385,48 @@ curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
 <aside class="notice">
 You must replace <code>abcdefgh12345678</code> with your personal API key.
 </aside>
+<h1 id='users'>Users</h1><h2 id='end-users'>End Users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/end_users"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"end_users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 16:30:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"defg5678"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Biz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-02 13:00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets list of end users associated to current user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.usealan.com/v1/end_users</code></p>
 <h1 id='appointments'>Appointments</h1><h2 id='mark-showed'>Mark Showed</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/mark_show/&lt;appointment_id&gt;"</span> <span class="se">\</span>
   <span class="nt">-X</span> POST <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -384,7 +442,7 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Marks appointment as &#39;Showed&#39;.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://api.usealan.com/v1/mark_show/&lt;appointment_id&gt;</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
@@ -413,7 +471,7 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Marks appointment as ‘No Showed’.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://api.usealan.com/v1/mark_no_show/&lt;appointment_id&gt;</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
@@ -446,7 +504,7 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Marks appointment as ‘Sold’.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://api.usealan.com/v1/mark_sold/&lt;appointment_id&gt;</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
@@ -466,6 +524,55 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 <tr>
 <td>annual_contract_value</td>
 <td>Annual contract value, double greater or equal than 0.</td>
+</tr>
+</tbody></table>
+<h1 id='stats'>Stats</h1><h2 id='main-stats'>Main Stats</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/stats/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"business_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@mail.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"leads"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"schedules"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shows"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solds"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-31 23:59:59"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets general stats for a specific user. If no date range is specified, lifetime stats will be returned.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GEThttps://api.usealan.com/v1/stats/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>ID of the end user.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>(Optional) YYYY-MM-DD Start date for query.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>(Optional) YYYY-MM-DD End date for query. It can&#39;t be less than the start date.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
