@@ -48,6 +48,58 @@ Usealan expects for the API key to be included in all API requests to the server
 You must replace <code>abcdefgh12345678</code> with your personal API key.
 </aside>
 
+# Users
+
+## End Users
+
+```shell
+curl "https://api.usealan.com/v1/end_users" \
+  -X GET \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "end_users": [
+      {
+        "id": "1001",
+        "user_name": "john1",
+        "user_code": "abcd1234",
+        "first_name": "John",
+        "last_name": "Doe",
+        "full_name": "John Doe",
+        "displayname": "John Doe",
+        "email": "john@mail.com",
+        "created_at": "2022-01-01 16:30:00"
+      },
+      {
+        "id": "1002",
+        "user_name": "james1",
+        "user_code": "defg5678",
+        "first_name": "James",
+        "last_name": "Doe",
+        "full_name": "James Doe",
+        "displayname": "James Biz",
+        "email": "james@mail.com",
+        "created_at": "2022-02-02 13:00:00"
+      }
+    ],
+    "code": 200,
+    "message": "Successful operation."
+  }
+}
+```
+
+Gets list of end users associated to current user.
+
+### HTTP Request
+
+`GET https://api.usealan.com/v1/end_users`
+
 # Appointments
 
 ## Mark Showed
@@ -148,3 +200,50 @@ Parameter | Description
 appointment_id | ID of the appoinment to mark as 'Sold'.
 down_payment | Down payment value, double greater or equal than 0.
 annual_contract_value | Annual contract value, double greater or equal than 0.
+
+# Stats
+
+## Main Stats
+
+```shell
+curl "https://api.usealan.com/v1/stats/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD" \
+  -X GET \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "business_details": {
+      "id": "1001",
+      "name": "John Doe",
+      "email": "john@mail.com"
+    },
+    "leads": 239,
+    "schedules": 75,
+    "shows": 35,
+    "solds": 25,
+    "start_date": "2022-12-01 00:00:00",
+    "end_date": "2022-12-31 23:59:59"
+  },
+  "code": 200,
+  "message": "Successful operation."
+}
+```
+
+Gets general stats for a specific user. If no date range is specified, lifetime stats will be returned.
+
+### HTTP Request
+
+`GEThttps://api.usealan.com/v1/stats/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+user_id | ID of the end user.
+start_date | (Optional) YYYY-MM-DD Start date for query.
+end_date | (Optional) YYYY-MM-DD End date for query. It can't be less than the start date.
