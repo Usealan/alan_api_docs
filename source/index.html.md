@@ -226,6 +226,8 @@ curl "https://api.usealan.com/v1/stats/<user_id>?start_date=YYYY-MM-DD&end_date=
     "schedules": 75,
     "shows": 35,
     "solds": 25,
+    "total_amount": 345,
+    "amount_down": 73,
     "start_date": "2022-12-01 00:00:00",
     "end_date": "2022-12-31 23:59:59"
   },
