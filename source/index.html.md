@@ -102,6 +102,66 @@ Gets list of end users associated to current user.
 
 # Appointments
 
+## Appointments List
+
+```shell
+curl "https://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD" \
+  -X GET \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": [
+        {
+            "appointment_id": "140124",
+            "appointment_status": "unchecked",
+            "lead_name": "Mariam Mustafa",
+            "lead_phone_number": "4148404738",
+            "campaign": "The challenge",
+            "appointment_date": "2020-07-06",
+            "appointment_start_time": "12:00:00",
+            "appointment_end_time": "12:30:00",
+            "end_user_note": "",
+            "down_payment": 0,
+            "total_contract_value": 0
+        },
+        {
+            "appointment_id": "139223",
+            "appointment_status": "unchecked",
+            "lead_name": "mark koss",
+            "lead_phone_number": "2626139824",
+            "campaign": "The challenge",
+            "appointment_date": "2020-07-06",
+            "appointment_start_time": "19:00:00",
+            "appointment_end_time": "19:30:00",
+            "end_user_note": "",
+            "down_payment": 0,
+            "total_contract_value": 0
+        }
+  ],
+  "code": 200,
+  "message": "Successful operation."
+}
+```
+
+Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 50 appointments will be applied.
+
+### HTTP Request
+
+`GEThttps://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+user_id | ID of the end user.
+start_date | (Optional) YYYY-MM-DD Start date for query.
+end_date | (Optional) YYYY-MM-DD End date for query. It can't be less than the start date.
+
 ## Mark Showed
 
 ```shell
