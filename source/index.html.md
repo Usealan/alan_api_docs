@@ -104,7 +104,7 @@ Gets list of end users associated to current user.
 
 Parameter | Description
 --------- | -----------
-q | (Optional) Search parameter to attempt to match leads by name, user_name or email.
+q | (Optional) Search parameter to attempt to match end users by name, user_name or email.
 
 # Leads
 
