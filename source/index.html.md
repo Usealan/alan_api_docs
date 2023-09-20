@@ -87,10 +87,10 @@ curl "https://api.usealan.com/v1/end_users" \
         "email": "james@mail.com",
         "created_at": "2022-02-02 13:00:00"
       }
-    ],
-    "code": 200,
-    "message": "Successful operation."
-  }
+    ]  
+  },
+  "code": 200,
+  "message": "Successful operation."
 }
 ```
 
@@ -98,7 +98,88 @@ Gets list of end users associated to current user.
 
 ### HTTP Request
 
-`GET https://api.usealan.com/v1/end_users`
+`GET https://api.usealan.com/v1/end_users?q=<criteria>`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+q | (Optional) Search parameter to attempt to match leads by name, user_name or email.
+
+# Leads
+
+## Leads List
+
+```shell
+curl "https://api.usealan.com/v1/leads" \
+  -X GET \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "data": {
+    "leads": [
+      {
+        "id": "12345",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@mail.com",
+        "phone": "1122334455",
+        "source": "click_funnel",
+        "status": "unchecked",
+        "campaign": "Sales Consultation",
+        "created_at": "2023-08-20 19:12:16",
+        "schedule_date_time": "2023-08-30 19:00:00",
+        "sms_initiated": "2023-08-21 04:01:45",
+        "last_message_sent": "2023-09-03 11:22:22",
+        "last_message_reply": "2023-09-02 08:01:45"
+      },
+      {
+        "id": "12345",
+        "first_name": "James",
+        "last_name": "Doe",
+        "email": "james.doe@mail.com",
+        "phone": "6677889900",
+        "source": "click_funnel",
+        "status": "unchecked",
+        "campaign": "Sales Consultation",
+        "created_at": "2023-08-21 19:12:16",
+        "schedule_date_time": "2023-09-01 19:00:00",
+        "sms_initiated": "2023-08-22 04:01:45",
+        "last_message_sent": "2023-09-04 11:22:22",
+        "last_message_reply": "2023-09-02 10:01:45"
+      }
+    ],
+    "page": 1,
+    "per_page": 50,
+    "total": 2,
+    "pages": 0,
+    "start_date": "2023-08-20 00:00:00",
+    "end_date": "2023-09-20 23:59:59"
+  },
+  "code": 200,
+  "message": "Successful operation."
+}
+```
+
+Gets list of leads for a specific user ordered from first. If no date range is specified last month will be used as default.
+
+### HTTP Request
+
+`GET https://api.usealan.com/v1/leads/<user_id>?start_date=<date>&end_date=<date>&q=<criteria>`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+user_id | ID of the end user.
+start_date | (Optional) YYYY-MM-DD Start date for query.
+end_date | (Optional) YYYY-MM-DD End date for query. It can't be less than the start date.
+q | (Optional) Search parameter to attempt to match leads by name, email or phone number.
 
 # Appointments
 
@@ -116,32 +197,32 @@ curl "https://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&en
 ```json
 {
   "data": [
-        {
-            "appointment_id": "140124",
-            "appointment_status": "unchecked",
-            "lead_name": "Mariam Mustafa",
-            "lead_phone_number": "4148404738",
-            "campaign": "The challenge",
-            "appointment_date": "2020-07-06",
-            "appointment_start_time": "12:00:00",
-            "appointment_end_time": "12:30:00",
-            "end_user_note": "",
-            "down_payment": 0,
-            "total_contract_value": 0
-        },
-        {
-            "appointment_id": "139223",
-            "appointment_status": "unchecked",
-            "lead_name": "mark koss",
-            "lead_phone_number": "2626139824",
-            "campaign": "The challenge",
-            "appointment_date": "2020-07-06",
-            "appointment_start_time": "19:00:00",
-            "appointment_end_time": "19:30:00",
-            "end_user_note": "",
-            "down_payment": 0,
-            "total_contract_value": 0
-        }
+    {
+      "appointment_id": "140124",
+      "appointment_status": "unchecked",
+      "lead_name": "Mariam Mustafa",
+      "lead_phone_number": "4148404738",
+      "campaign": "The challenge",
+      "appointment_date": "2020-07-06",
+      "appointment_start_time": "12:00:00",
+      "appointment_end_time": "12:30:00",
+      "end_user_note": "",
+      "down_payment": 0,
+      "total_contract_value": 0
+    },
+    {
+      "appointment_id": "139223",
+      "appointment_status": "unchecked",
+      "lead_name": "mark koss",
+      "lead_phone_number": "2626139824",
+      "campaign": "The challenge",
+      "appointment_date": "2020-07-06",
+      "appointment_start_time": "19:00:00",
+      "appointment_end_time": "19:30:00",
+      "end_user_note": "",
+      "down_payment": 0,
+      "total_contract_value": 0
+    }
   ],
   "code": 200,
   "message": "Successful operation."
@@ -152,7 +233,7 @@ Gets list of appointments for a specific user ordered from last. If no date rang
 
 ### HTTP Request
 
-`GEThttps://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`
+`GET https://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`
 
 ### Query Parameters
 
