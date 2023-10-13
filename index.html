@@ -447,7 +447,7 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>q</td>
-<td>(Optional) Search parameter to attempt to match leads by name, user_name or email.</td>
+<td>(Optional) Search parameter to attempt to match end users by name, user_name or email.</td>
 </tr>
 </tbody></table>
 <h1 id='leads'>Leads</h1><h2 id='leads-list'>Leads List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/leads"</span> <span class="se">\</span>
@@ -529,6 +529,14 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 <td>q</td>
 <td>(Optional) Search parameter to attempt to match leads by name, email or phone number.</td>
 </tr>
+<tr>
+<td>size</td>
+<td>(Optional) Integer. Quantity of results returned. Default is 500. Maximum is 5000</td>
+</tr>
+<tr>
+<td>page</td>
+<td>(Optional) Integer. The page parameter is used to specify the page number when retrieving paginated data. Default is 1.</td>
+</tr>
 </tbody></table>
 <h1 id='appointments'>Appointments</h1><h2 id='appointments-list'>Appointments List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/appointments/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET <span class="se">\</span>
@@ -549,6 +557,8 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
       </span><span class="nl">"appointment_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-06"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"appointment_start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"appointment_end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:30:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01 12:12:41"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"end_user_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"down_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"total_contract_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -562,6 +572,8 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
       </span><span class="nl">"appointment_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-06"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"appointment_start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:00:00"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"appointment_end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:30:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-02 11:10:33"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"end_user_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"down_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="nl">"total_contract_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
@@ -571,7 +583,7 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 50 appointments will be applied.</p>
+<p>Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 500 appointments will be applied. &quot;multiparty&quot; information in the results is optional depending on CPs configuration.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://api.usealan.com/v1/appointments/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
@@ -592,6 +604,14 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 <tr>
 <td>end_date</td>
 <td>(Optional) YYYY-MM-DD End date for query. It can&#39;t be less than the start date.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>(Optional) Integer. Quantity of results returned. Default is 500. Maximum is 5000</td>
+</tr>
+<tr>
+<td>page</td>
+<td>(Optional) Integer. The page parameter is used to specify the page number when retrieving paginated data. Default is 1.</td>
 </tr>
 </tbody></table>
 <h2 id='mark-showed'>Mark Showed</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/mark_show/&lt;appointment_id&gt;"</span> <span class="se">\</span>
