@@ -235,7 +235,7 @@ curl "https://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&en
 }
 ```
 
-Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 500 appointments will be applied. "multiparty" information in the results is optional depending on CPs configuration.
+Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 500 appointments will be applied. The "multiparty" data in the results is optional depending on the CPs configuration.
 
 ### HTTP Request
 
