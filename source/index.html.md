@@ -180,6 +180,8 @@ user_id | ID of the end user.
 start_date | (Optional) YYYY-MM-DD Start date for query.
 end_date | (Optional) YYYY-MM-DD End date for query. It can't be less than the start date.
 q | (Optional) Search parameter to attempt to match leads by name, email or phone number.
+size | (Optional) Integer. Quantity of results returned. Default is 500. Maximum is 5000
+page | (Optional) Integer. The page parameter is used to specify the page number when retrieving paginated data. Default is 1.
 
 # Appointments
 
@@ -206,6 +208,8 @@ curl "https://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&en
       "appointment_date": "2020-07-06",
       "appointment_start_time": "12:00:00",
       "appointment_end_time": "12:30:00",
+      "appointment_created": "2020-07-01 12:12:41",
+      "appointment_timezone": "America/New_York",
       "end_user_note": "",
       "down_payment": 0,
       "total_contract_value": 0
@@ -219,6 +223,8 @@ curl "https://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&en
       "appointment_date": "2020-07-06",
       "appointment_start_time": "19:00:00",
       "appointment_end_time": "19:30:00",
+      "appointment_created": "2020-07-02 11:10:33",
+      "appointment_timezone": "America/New_York",
       "end_user_note": "",
       "down_payment": 0,
       "total_contract_value": 0
@@ -229,7 +235,7 @@ curl "https://api.usealan.com/v1/appointments/<user_id>?start_date=YYYY-MM-DD&en
 }
 ```
 
-Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 50 appointments will be applied.
+Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 500 appointments will be applied. "multiparty" information in the results is optional depending on CPs configuration.
 
 ### HTTP Request
 
@@ -242,6 +248,8 @@ Parameter | Description
 user_id | ID of the end user.
 start_date | (Optional) YYYY-MM-DD Start date for query.
 end_date | (Optional) YYYY-MM-DD End date for query. It can't be less than the start date.
+size | (Optional) Integer. Quantity of results returned. Default is 500. Maximum is 5000
+page | (Optional) Integer. The page parameter is used to specify the page number when retrieving paginated data. Default is 1.
 
 ## Mark Showed
 
