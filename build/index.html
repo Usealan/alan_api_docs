@@ -1,0 +1,910 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Usealan API"
+        >
+    <title>API Reference</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-179b9fc3.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-b12a2749.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-20d56234.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#end-users" class="toc-h2 toc-link" data-title="End Users">End Users</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#leads" class="toc-h1 toc-link" data-title="Leads">Leads</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#leads-list" class="toc-h2 toc-link" data-title="Leads List">Leads List</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#appointments" class="toc-h1 toc-link" data-title="Appointments">Appointments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#appointments-list" class="toc-h2 toc-link" data-title="Appointments List">Appointments List</a>
+                  </li>
+                  <li>
+                    <a href="#mark-showed" class="toc-h2 toc-link" data-title="Mark Showed">Mark Showed</a>
+                  </li>
+                  <li>
+                    <a href="#mark-no-showed" class="toc-h2 toc-link" data-title="Mark No Showed">Mark No Showed</a>
+                  </li>
+                  <li>
+                    <a href="#mark-sold" class="toc-h2 toc-link" data-title="Mark Sold">Mark Sold</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#invoices" class="toc-h1 toc-link" data-title="Invoices">Invoices</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#invoices-list" class="toc-h2 toc-link" data-title="Invoices List">Invoices List</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#stats" class="toc-h1 toc-link" data-title="Stats">Stats</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#main-stats" class="toc-h2 toc-link" data-title="Main Stats">Main Stats</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://usealan.com/'>Sign Up for API Key</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Usealan API! You can use our API to access various API endpoints, which can get information about leads, appointments, messages and campaigns. Everything related to your business.</p>
+
+<p>You can view code examples in the dark area to the right.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>Make sure to replace <code>abcdefgh12345678</code> with your API key.</p>
+</blockquote>
+
+<p>Usealan uses API keys to allow access to the API. You can view your API key in your <a href="https://usealan.com/">admin portal</a>.</p>
+
+<p>Usealan expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Bearer abcdefgh12345678</code></p>
+
+<aside class="notice">
+You must replace <code>abcdefgh12345678</code> with your personal API key.
+</aside>
+<h1 id='users'>Users</h1><h2 id='end-users'>End Users</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/end_users"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"end_users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd1234"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-01 16:30:00"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1002"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"user_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"defg5678"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"displayname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James Biz"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-02 13:00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">  
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets list of end users associated to current user.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.usealan.com/v1/end_users?q=&lt;criteria&gt;</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>q</td>
+<td>(Optional) Search parameter to attempt to match end users by name, user_name or email.</td>
+</tr>
+</tbody></table>
+<h1 id='leads'>Leads</h1><h2 id='leads-list'>Leads List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/leads"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"leads"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1122334455"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"click_funnel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unchecked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Consultation"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-20 19:12:16"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"schedule_date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-30 19:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sms_initiated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-21 04:01:45"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_message_sent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-03 11:22:22"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_message_reply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-02 08:01:45"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"James"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"james.doe@mail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6677889900"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"click_funnel"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unchecked"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Consultation"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-21 19:12:16"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"schedule_date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-01 19:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sms_initiated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-22 04:01:45"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_message_sent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-04 11:22:22"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_message_reply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-02 10:01:45"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-08-20 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-09-20 23:59:59"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets list of leads for a specific user ordered from first. If no date range is specified last month will be used as default.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.usealan.com/v1/leads/&lt;user_id&gt;?start_date=&lt;date&gt;&amp;end_date=&lt;date&gt;&amp;q=&lt;criteria&gt;</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>ID of the end user.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>(Optional) YYYY-MM-DD Start date for query.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>(Optional) YYYY-MM-DD End date for query. It can&#39;t be less than the start date.</td>
+</tr>
+<tr>
+<td>q</td>
+<td>(Optional) Search parameter to attempt to match leads by name, email or phone number.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>(Optional) Integer. Quantity of results returned. Default is 500. Maximum is 5000</td>
+</tr>
+<tr>
+<td>page</td>
+<td>(Optional) Integer. The page parameter is used to specify the page number when retrieving paginated data. Default is 1.</td>
+</tr>
+</tbody></table>
+<h1 id='appointments'>Appointments</h1><h2 id='appointments-list'>Appointments List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/appointments/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"appointment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140124"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unchecked"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lead_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mariam Mustafa"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lead_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4148404738"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The challenge"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-06"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12:30:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-01 12:12:41"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_user_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"down_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total_contract_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"appointment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"139223"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unchecked"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lead_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mark koss"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lead_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2626139824"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The challenge"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-06"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19:30:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-02 11:10:33"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"appointment_timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"America/New_York"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end_user_note"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"down_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total_contract_value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets list of appointments for a specific user ordered from last. If no date range is specified a limit of 500 appointments will be applied. The &quot;multiparty&quot; data in the results is optional depending on the CPs configuration.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.usealan.com/v1/appointments/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>ID of the end user.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>(Optional) YYYY-MM-DD Start date for query.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>(Optional) YYYY-MM-DD End date for query. It can&#39;t be less than the start date.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>(Optional) Integer. Quantity of results returned. Default is 500. Maximum is 5000</td>
+</tr>
+<tr>
+<td>page</td>
+<td>(Optional) Integer. The page parameter is used to specify the page number when retrieving paginated data. Default is 1.</td>
+</tr>
+</tbody></table>
+<h2 id='mark-showed'>Mark Showed</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/mark_show/&lt;appointment_id&gt;"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Appointment &lt;appointment_id&gt; successfully marked as showed."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Marks appointment as &#39;Showed&#39;.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://api.usealan.com/v1/mark_show/&lt;appointment_id&gt;</code></p>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appointment_id</td>
+<td>ID of the appoinment to mark as &#39;Showed&#39;.</td>
+</tr>
+</tbody></table>
+<h2 id='mark-no-showed'>Mark No Showed</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/mark_no_show/&lt;appointment_id&gt;"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Appointment &lt;appointment_id&gt; successfully marked as no showed."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Marks appointment as ‘No Showed’.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST https://api.usealan.com/v1/mark_no_show/&lt;appointment_id&gt;</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appointment_id</td>
+<td>ID of the appoinment to mark as &#39;No Showed&#39;.</td>
+</tr>
+</tbody></table>
+<h2 id='mark-sold'>Mark Sold</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/mark_sold/&lt;appointment_id&gt;"</span> <span class="se">\</span>
+  <span class="nt">-X</span> POST <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "down_payment": 70,
+    "annual_contract_value": 5000
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Appointment &lt;appointment_id&gt; successfully marked as sold."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Marks appointment as ‘Sold’.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST https://api.usealan.com/v1/mark_sold/&lt;appointment_id&gt;</code></p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>appointment_id</td>
+<td>ID of the appoinment to mark as &#39;Sold&#39;.</td>
+</tr>
+<tr>
+<td>down_payment</td>
+<td>Down payment value, double greater or equal than 0.</td>
+</tr>
+<tr>
+<td>annual_contract_value</td>
+<td>Annual contract value, double greater or equal than 0.</td>
+</tr>
+</tbody></table>
+<h1 id='invoices'>Invoices</h1><h2 id='invoices-list'>Invoices List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/invoices/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALN-123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-04-08 01:26:44"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invoice_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirm"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"billing_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model_billing"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29.98"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29.98"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"lead_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Holly Klinkhammer"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Consultation"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"charge_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOWED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marked"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confirm_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.99"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"lead_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joel Durfee"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Consultation"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"charge_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOWED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marked"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confirm_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.99"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"business_details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End User Name"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets list of invoices for a specific user. If no date range is specified, lifetime invoices will be returned.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GEThttps://api.usealan.com/v1/invoices/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>ID of the end user.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>(Optional) YYYY-MM-DD Start date for query.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>(Optional) YYYY-MM-DD End date for query. It can&#39;t be less than the start date.</td>
+</tr>
+</tbody></table>
+<h1 id='stats'>Stats</h1><h2 id='main-stats'>Main Stats</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/stats/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"business_details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@mail.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"leads"</span><span class="p">:</span><span class="w"> </span><span class="mi">239</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"schedules"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shows"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"solds"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">345</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount_down"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-01 00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-12-31 23:59:59"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets general stats for a specific user. If no date range is specified, lifetime stats will be returned.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GEThttps://api.usealan.com/v1/stats/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD</code></p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>ID of the end user.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>(Optional) YYYY-MM-DD Start date for query.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>(Optional) YYYY-MM-DD End date for query. It can&#39;t be less than the start date.</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<p>The Usealan API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The resource requested can&#39;t be accessed.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified resource could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The resource requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many resources! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
