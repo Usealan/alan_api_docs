@@ -350,6 +350,76 @@ appointment_id | ID of the appoinment to mark as 'Sold'.
 down_payment | Down payment value, double greater or equal than 0.
 annual_contract_value | Annual contract value, double greater or equal than 0.
 
+# Invoices
+
+## Invoices List
+
+```shell
+curl "https://api.usealan.com/v1/invoices/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD" \
+  -X GET \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer abcdefgh12345678"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "order_id": "123456",
+            "invoice_number": "ALN-123456",
+            "date": "2024-04-08 01:26:44",
+            "status": "failed",
+            "invoice_type": "Confirm",
+            "billing_type": "model_billing",
+            "subtotal": "29.98",
+            "tax": "0",
+            "total": "29.98",
+            "items": [
+                {
+                    "lead_name": "Holly Klinkhammer",
+                    "campaign": "Sales Consultation",
+                    "charge_type": "SHOWED",
+                    "reason": "Marked",
+                    "confirm_price": "14.99"
+                },
+                {
+                    "lead_name": "Joel Durfee",
+                    "campaign": "Sales Consultation",
+                    "charge_type": "SHOWED",
+                    "reason": "Marked",
+                    "confirm_price": "14.99"
+                }
+            ],
+            "business_details": [
+                {
+                    "id": "1234",
+                    "name": "End User Name",
+                    "email": "test@example.com"
+                }
+            ]
+        }
+    ],
+    "code": 200,
+    "message": "Successful operation."
+}
+```
+
+Gets list of invoices for a specific user. If no date range is specified, lifetime invoices will be returned.
+
+### HTTP Request
+
+`GEThttps://api.usealan.com/v1/invoices/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+user_id | ID of the end user.
+start_date | (Optional) YYYY-MM-DD Start date for query.
+end_date | (Optional) YYYY-MM-DD End date for query. It can't be less than the start date.
+
 # Stats
 
 ## Main Stats
