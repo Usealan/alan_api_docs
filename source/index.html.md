@@ -410,7 +410,7 @@ Gets list of invoices for a specific user. If no date range is specified, lifeti
 
 ### HTTP Request
 
-`GEThttps://api.usealan.com/v1/invoices/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`
+`GET https://api.usealan.com/v1/invoices/<user_id>?start_date=YYYY-MM-DD&end_date=YYYY-MM-DD`
 
 ### Query Parameters
 
