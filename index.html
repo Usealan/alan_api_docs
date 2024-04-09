@@ -352,6 +352,14 @@
               </ul>
           </li>
           <li>
+            <a href="#invoices" class="toc-h1 toc-link" data-title="Invoices">Invoices</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#invoices-list" class="toc-h2 toc-link" data-title="Invoices List">Invoices List</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#stats" class="toc-h1 toc-link" data-title="Stats">Stats</a>
               <ul class="toc-list-h2">
                   <li>
@@ -713,6 +721,78 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 <td>Annual contract value, double greater or equal than 0.</td>
 </tr>
 </tbody></table>
+<h1 id='invoices'>Invoices</h1><h2 id='invoices-list'>Invoices List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/invoices/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD"</span> <span class="se">\</span>
+  <span class="nt">-X</span> GET <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer abcdefgh12345678"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invoice_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ALN-123456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-04-08 01:26:44"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"invoice_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Confirm"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"billing_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"model_billing"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29.98"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29.98"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"lead_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Holly Klinkhammer"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Consultation"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"charge_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOWED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marked"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confirm_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.99"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"lead_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joel Durfee"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sales Consultation"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"charge_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHOWED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Marked"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confirm_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14.99"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"business_details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"End User Name"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Successful operation."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Gets list of invoices for a specific user. If no date range is specified, lifetime invoices will be returned.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GEThttps://api.usealan.com/v1/invoices/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD</code></p>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id</td>
+<td>ID of the end user.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>(Optional) YYYY-MM-DD Start date for query.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>(Optional) YYYY-MM-DD End date for query. It can&#39;t be less than the start date.</td>
+</tr>
+</tbody></table>
 <h1 id='stats'>Stats</h1><h2 id='main-stats'>Main Stats</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.usealan.com/v1/stats/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD"</span> <span class="se">\</span>
   <span class="nt">-X</span> GET <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -742,9 +822,9 @@ You must replace <code>abcdefgh12345678</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Gets general stats for a specific user. If no date range is specified, lifetime stats will be returned.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GEThttps://api.usealan.com/v1/stats/&lt;user_id&gt;?start_date=YYYY-MM-DD&amp;end_date=YYYY-MM-DD</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
